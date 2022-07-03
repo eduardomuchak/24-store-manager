@@ -1,0 +1,37 @@
+const productServices = require('../services/productServices');
+const {
+  HTTP_CREATED_STATUS,
+  HTTP_OK_STATUS,
+} = require('../helpers/codesHTTP');
+
+const productController = {
+  async listAllProducts(_req, res) {
+    const products = await productServices.listAllProducts();
+    res.status(HTTP_OK_STATUS).json(products);
+  },
+
+  async getProductById(req, res) {
+    const { id } = req.params;
+    const product = await productServices.getProductById(id);
+    res.status(HTTP_OK_STATUS).json(product);
+  },
+
+  async addProduct(req, res) {
+    const isValidBodyName = await productServices.validateBody(req.body);
+    const product = await productServices.addProduct(isValidBodyName);
+    res.status(HTTP_CREATED_STATUS).json(product);
+  },
+
+  async editProduct(req, res) {
+    const [{ id }, changes] = await Promise.all([
+      productServices.validateParamsId(req.params),
+      productServices.validateBody(req.body),
+    ]);
+    await productServices.checkIfExists(id);
+    await productServices.editProduct(id, changes);
+    const product = await productServices.getProductById(id);
+    res.status(HTTP_OK_STATUS).json(product);
+  },
+};
+
+module.exports = productController;
