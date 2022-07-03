@@ -25,14 +25,20 @@ const productModel = {
 
   async editProduct(id, changes) {
     const query = 'UPDATE products SET name = ? WHERE id = ?';
-    await connection.execute(query, [changes, id]);
-    // return product;
+    const product = await connection.execute(query, [changes, id]);
+    return product;
   },
 
   async checkIfExists(id) {
     const query = 'SELECT 1 FROM products WHERE id = ?';
     const [[exists]] = await connection.execute(query, [id]);
     return !!exists;
+  },
+
+  async deleteProduct(id) {
+    const query = 'DELETE FROM products WHERE id = ?';
+    const product = await connection.execute(query, [id]);
+    return product;
   },
 };
 

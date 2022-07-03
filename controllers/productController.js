@@ -2,6 +2,7 @@ const productServices = require('../services/productServices');
 const {
   HTTP_CREATED_STATUS,
   HTTP_OK_STATUS,
+  HTTP_NO_CONTENT_STATUS,
 } = require('../helpers/codesHTTP');
 
 const productController = {
@@ -31,6 +32,13 @@ const productController = {
     await productServices.editProduct(id, changes);
     const product = await productServices.getProductById(id);
     res.status(HTTP_OK_STATUS).json(product);
+  },
+
+  async deleteProduct(req, res) {
+    const { id } = await productServices.validateParamsId(req.params);
+    await productServices.checkIfExists(id);
+    await productServices.deleteProduct(id);
+    res.sendStatus(HTTP_NO_CONTENT_STATUS);
   },
 };
 
