@@ -78,5 +78,33 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "0aac3163-ea61-4466-bfc6-f0022f073857",
+    "colId": "b57b989b-d25c-42b3-bde0-b2574933e2c7",
+    "containerId": "a9731350-b764-43bd-95dc-26a46941641d",
+    "name": "GET /sales",
+    "url": "localhost:3000/sales",
+    "method": "GET",
+    "sortNum": 60000,
+    "created": "2022-07-04T17:46:57.544Z",
+    "modified": "2022-07-04T17:47:07.010Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "22e9fafb-ab82-42c5-b1a5-5e2db3917a6e",
+    "colId": "b57b989b-d25c-42b3-bde0-b2574933e2c7",
+    "containerId": "a9731350-b764-43bd-95dc-26a46941641d",
+    "name": "GET /sales/:id",
+    "url": "localhost:3000/sales/1",
+    "method": "GET",
+    "sortNum": 70000,
+    "created": "2022-07-04T17:47:13.642Z",
+    "modified": "2022-07-04T17:47:29.733Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]

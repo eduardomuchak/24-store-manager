@@ -11,9 +11,12 @@ const salesController = {
   },
 
   async getSaleById(req, res) {
-    const { id } = req.params;
-    const product = await salesServices.getSaleById(id);
-    res.status(HTTP_OK_STATUS).json(product);
+    const [{ id }] = await Promise.resolve([
+      salesServices.validateParamsId(req.params),
+    ]);
+    await salesServices.checkIfExists(id);
+    const sale = await salesServices.getSaleById(id);
+    res.status(HTTP_OK_STATUS).json(sale);
   },
 
 };

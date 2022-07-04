@@ -12,7 +12,10 @@ const productController = {
   },
 
   async getProductById(req, res) {
-    const { id } = req.params;
+    const [{ id }] = await Promise.resolve([
+      productServices.validateParamsId(req.params),
+    ]);
+    await productServices.checkIfExists(id);
     const product = await productServices.getProductById(id);
     res.status(HTTP_OK_STATUS).json(product);
   },

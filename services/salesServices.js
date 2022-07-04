@@ -10,6 +10,13 @@ const salesServices = {
       id: Joi.number().required().integer(),
     }),
   ),
+
+  async checkIfExists(saleId) {
+    const exists = await salesModel.checkIfExists(saleId);
+    if (!exists) {
+      throw new NotFoundError('Sale not found');
+    }
+  },
   
   async listAllSales() {
     const sales = await salesModel.listAllSales();
@@ -18,9 +25,6 @@ const salesServices = {
 
   async getSaleById(saleId) {
     const sale = await salesModel.getSaleById(saleId);
-    if (!sale.length) {
-      throw new NotFoundError('Sale not found');
-    }
     return sale;
   },
 

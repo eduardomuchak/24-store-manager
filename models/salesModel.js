@@ -1,6 +1,12 @@
 const connection = require('./connection');
 
 const salesModel = {
+
+  async checkIfExists(saleId) {
+    const query = 'SELECT 1 FROM sales_products WHERE sale_id = ?';
+    const [[exists]] = await connection.execute(query, [saleId]);
+    return !!exists;
+  },
   
   async listAllSales() {
     const query = `
@@ -27,7 +33,7 @@ const salesModel = {
           sp.quantity
       FROM 
           sales_products AS sp
-            INNER JOIN 
+              INNER JOIN 
           sales AS s ON sp.sale_id = s.id
       WHERE s.id = ?;
     `;
