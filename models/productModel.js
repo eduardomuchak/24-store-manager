@@ -2,6 +2,12 @@ const connection = require('./connection');
 
 const productModel = {
 
+  async checkIfExists(id) {
+    const query = 'SELECT 1 FROM products WHERE id = ?';
+    const [[exists]] = await connection.execute(query, [id]);
+    return !!exists;
+  },
+
   async listAllProducts() {
     const query = 'SELECT * FROM products';
     const products = await connection.execute(query);
@@ -27,12 +33,6 @@ const productModel = {
     const query = 'UPDATE products SET name = ? WHERE id = ?';
     const product = await connection.execute(query, [changes, id]);
     return product;
-  },
-
-  async checkIfExists(id) {
-    const query = 'SELECT 1 FROM products WHERE id = ?';
-    const [[exists]] = await connection.execute(query, [id]);
-    return !!exists;
   },
 
   async deleteProduct(id) {
