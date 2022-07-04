@@ -1,0 +1,82 @@
+[
+  {
+    "_id": "5aec79c6-dbcc-47ef-865d-4647c113fe7b",
+    "colId": "b57b989b-d25c-42b3-bde0-b2574933e2c7",
+    "containerId": "cb7ef502-7fdc-4a0d-abea-d92d9f83417f",
+    "name": "GET /products",
+    "url": "localhost:3000/products",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2022-07-03T22:14:48.988Z",
+    "modified": "2022-07-03T22:19:42.905Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "6608867d-bffb-4f84-8017-2f60d1e735c0",
+    "colId": "b57b989b-d25c-42b3-bde0-b2574933e2c7",
+    "containerId": "cb7ef502-7fdc-4a0d-abea-d92d9f83417f",
+    "name": "GET /products/:id",
+    "url": "localhost:3000/products/3",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2022-07-03T22:15:44.726Z",
+    "modified": "2022-07-03T22:19:43.923Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "654328bd-1044-488b-9df9-eaaa5164b3c1",
+    "colId": "b57b989b-d25c-42b3-bde0-b2574933e2c7",
+    "containerId": "cb7ef502-7fdc-4a0d-abea-d92d9f83417f",
+    "name": "POST /products",
+    "url": "localhost:3000/products",
+    "method": "POST",
+    "sortNum": 30000,
+    "created": "2022-07-03T22:16:10.506Z",
+    "modified": "2022-07-03T22:19:47.018Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"name\": \"Manopla do infinito\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "1469031c-2727-4faa-b600-1ea56f42cd3a",
+    "colId": "b57b989b-d25c-42b3-bde0-b2574933e2c7",
+    "containerId": "cb7ef502-7fdc-4a0d-abea-d92d9f83417f",
+    "name": "PUT /products/:id",
+    "url": "localhost:3000/products/3",
+    "method": "PUT",
+    "sortNum": 40000,
+    "created": "2022-07-03T22:17:40.753Z",
+    "modified": "2022-07-03T22:19:48.412Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"name\": \"Capa do Batman\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "71445305-a2b0-4589-a077-b7ff60d68e49",
+    "colId": "b57b989b-d25c-42b3-bde0-b2574933e2c7",
+    "containerId": "cb7ef502-7fdc-4a0d-abea-d92d9f83417f",
+    "name": "DELETE /products/:id",
+    "url": "localhost:3000/products/4",
+    "method": "DELETE",
+    "sortNum": 50000,
+    "created": "2022-07-03T22:18:36.707Z",
+    "modified": "2022-07-03T22:19:49.772Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  }
+]

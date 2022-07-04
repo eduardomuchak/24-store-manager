@@ -1,0 +1,24 @@
+[
+  {
+    "_id": "b57b989b-d25c-42b3-bde0-b2574933e2c7",
+    "colName": "Store Manager Project",
+    "created": "2022-07-03T22:14:27.196Z",
+    "sortNum": 10000,
+    "folders": [
+      {
+        "_id": "cb7ef502-7fdc-4a0d-abea-d92d9f83417f",
+        "name": "/products",
+        "containerId": "",
+        "created": "2022-07-03T22:19:40.453Z",
+        "sortNum": 10000
+      },
+      {
+        "_id": "a9731350-b764-43bd-95dc-26a46941641d",
+        "name": "/sales",
+        "containerId": "",
+        "created": "2022-07-03T22:19:58.592Z",
+        "sortNum": 20000
+      }
+    ]
+  }
+]

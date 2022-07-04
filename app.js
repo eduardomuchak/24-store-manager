@@ -2,6 +2,7 @@ const express = require('express');
 const errorMiddleware = require('./middlewares/errorMiddleware');
 require('express-async-errors');
 const productsRoutes = require('./routes/productsRoutes');
+const salesRoutes = require('./routes/salesRoutes');
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.get('/', (_request, response) => {
 });
 
 app.use('/products', productsRoutes);
+app.use('/sales', salesRoutes);
 
 app.use(errorMiddleware);
 
