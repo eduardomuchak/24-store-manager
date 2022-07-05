@@ -4,7 +4,7 @@ const db = require('../../../models/connection');
 const productsMock = require('../mocks/products.mock.js');
 const productModel = require('../../../models/productModel');
 
-describe('Testa o productsModel', () => {
+describe('#Testa o productModel', () => {
   
   beforeEach(() => {
     sinon.restore();

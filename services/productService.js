@@ -22,6 +22,7 @@ const productService = {
     if (!exists) {
       throw new NotFoundError('Product not found');
     }
+    return true;
   },
 
   async listAllProducts() {
@@ -41,12 +42,15 @@ const productService = {
 
   async editProduct(id, changes) {
     if (Object.keys(changes).length) {
-      await productModel.editProduct(id, changes.name);
+      const result = await productModel.editProduct(id, changes.name);
+      return result;
     }
+    return false;
   },
 
   async deleteProduct(id) {
     await productModel.deleteProduct(id);
+    return true;
   },
 };
 
