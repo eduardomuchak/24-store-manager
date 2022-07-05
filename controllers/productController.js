@@ -44,6 +44,12 @@ const productController = {
     await productService.deleteProduct(id);
     res.sendStatus(HTTP_NO_CONTENT_STATUS);
   },
+
+  async searchProducts(req, res) {
+    const { q } = req.query;
+    const products = await productService.searchProducts(q);
+    res.status(HTTP_OK_STATUS).json(products);
+  },
 };
 
 module.exports = productController;

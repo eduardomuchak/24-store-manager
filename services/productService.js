@@ -52,6 +52,11 @@ const productService = {
     await productModel.deleteProduct(id);
     return true;
   },
+
+  async searchProducts(queryRequest) {
+    const products = await productModel.searchProducts(queryRequest);
+    return products;
+  },
 };
 
 module.exports = productService;

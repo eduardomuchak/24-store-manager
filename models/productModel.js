@@ -40,6 +40,12 @@ const productModel = {
     const product = await connection.execute(query, [id]);
     return product;
   },
+
+  async searchProducts(queryRequest) {
+    const query = 'SELECT * FROM products WHERE name LIKE ?';
+    const [products] = await connection.execute(query, [`%${queryRequest}%`]);
+    return products;
+  },
 };
 
 module.exports = productModel;
