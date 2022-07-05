@@ -6,6 +6,7 @@ const {
 } = require('../helpers/codesHTTP');
 
 const productController = {
+  
   async listAllProducts(_req, res) {
     const products = await productService.listAllProducts();
     res.status(HTTP_OK_STATUS).json(products);

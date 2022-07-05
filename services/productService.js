@@ -41,11 +41,11 @@ const productService = {
   },
 
   async editProduct(id, changes) {
-    if (Object.keys(changes).length) {
-      const result = await productModel.editProduct(id, changes.name);
-      return result;
+    if (!Object.keys(changes).length) {
+      return false;
     }
-    return false;
+    const result = await productModel.editProduct(id, changes.name);
+    return result;
   },
 
   async deleteProduct(id) {
