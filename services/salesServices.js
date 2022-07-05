@@ -16,6 +16,7 @@ const salesServices = {
     if (!exists) {
       throw new NotFoundError('Sale not found');
     }
+    return true;
   },
   
   async listAllSales() {
