@@ -30,36 +30,20 @@ describe('Testa o productsModel', () => {
       const productsList = await productModel.listAllProducts();
       expect(productsList).to.be.an('array');
     });
-    
-    // it('tal array deve possuir todos os produtos cadastrados', async () => {
-    //   sinon.stub(db, 'query').resolves([[productsMock]]);
-    //   const productsList = await productModel.listAllProducts();
-    //   expect(productsList).to.be.eql(productsMock);
-    // });
-
   });
 
   describe('#getProductById', () => {
     it('deve retornar um objeto se a requisição for realizada com sucesso', async () => {
-      sinon.stub(db, 'query').resolves([productsMock[2]]);
-      const foundProduct = await productModel.getProductById(3);
+      sinon.stub(db, 'query').resolves([productsMock[0]]);
+      const foundProduct = await productModel.getProductById(1);
       expect(foundProduct).to.be.an('object');
     });
 
     it('tal objeto deve possuir as chaves "id" e "name" do produto', async () => {
-      sinon.stub(db, 'query').resolves([productsMock[2]]);
-      const foundProduct = await productModel.getProductById(3);
+      sinon.stub(db, 'query').resolves([productsMock[0]]);
+      const foundProduct = await productModel.getProductById(1);
       expect(foundProduct).to.have.a.property('id');
       expect(foundProduct).to.have.a.property('name');
-    });
-  });
-
-  describe('#editProduct', function () {
-    const payload = { id: 2, name: 'Arco do Gavião Arqueiro' };
-    it('deve retornar um objeto se a requisição for realizada com sucesso', async () => {
-      sinon.stub(db, 'query').resolves([productsMock[0]]);
-      const [foundProduct] = await productModel.editProduct(payload.id, payload.name);
-      expect(foundProduct).to.be.an('object');
     });
   });
 
@@ -80,9 +64,15 @@ describe('Testa o productsModel', () => {
   describe('#editProduct', function () {
     const payload = { id: 2, name: 'Arco do Gavião Arqueiro' };
     it('deve retornar um objeto se a requisição for realizada com sucesso', async () => {
-      sinon.stub(db, 'query').resolves([productsMock[0]]);
+      sinon.stub(db, 'query').resolves([{affectedRows: 1}]);
       const [foundProduct] = await productModel.editProduct(payload.id, payload.name);
       expect(foundProduct).to.be.an('object');
+    });
+
+    it('tal objeto deve conter a chave "affectedRows" com valor "1"', async () => {
+      sinon.stub(db, 'query').resolves([{ affectedRows: 1 }]);
+      const [{ affectedRows }] = await productModel.editProduct(payload.id, payload.name);
+      expect(affectedRows).to.have.equal(1);
     });
   });
 
