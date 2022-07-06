@@ -52,6 +52,13 @@ const salesServices = {
     await Promise.all(result);
     return saleId;
   },
+
+  async editSale(saleId, sale) {
+    const result = sale.map(({ productId, quantity }) =>
+      salesProductModel.editSaleProducts(quantity, saleId, productId));
+    await Promise.all(result);
+    return saleId;
+  },
 };
 
 module.exports = salesServices;
