@@ -34,16 +34,6 @@ const salesServices = {
     }
     return true;
   },
-
-  // async checkIfProductExists(arrayOfProductIds) {
-  //   const productExists = await arrayOfProductIds
-  //     .map((product) => salesProductModel.checkIfProductExists(product));
-    
-  //     if (!productExists) {
-  //       throw new NotFoundError('Product not found');
-  //     }
-  //     return true;
-  // },
   
   async listAllSales() {
     const sales = await salesModel.listAllSales();
