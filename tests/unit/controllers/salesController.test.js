@@ -5,6 +5,7 @@ const sinon = require('sinon');
 const salesMock = require('../mocks/sales.mock.js');
 const salesService = require('../../../services/salesServices');
 const salesController = require('../../../controllers/salesController');
+const { ValidationError } = require('joi');
 
 use(chaiAsPromised);
 
@@ -46,6 +47,20 @@ describe('#Testa o salesController', () => {
 
       expect(res.status.calledWith(200)).to.be.equal(true);
       expect(res.json.calledWith(salesMock[0])).to.be.equal(true);
+    });
+  });
+
+  describe('#addSale', async () => {
+    it('deve retornar um erro ao tentar adicionar uma venda com o corpo da requisição inválido', async () => {
+      const req = {};
+      const res = {};
+
+      req.body = {};
+
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns(res);
+
+      expect(salesController.addSale(req, res)).to.be.rejectedWith(ValidationError);
     });
   });
 })

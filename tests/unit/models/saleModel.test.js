@@ -10,16 +10,16 @@ describe('#Testa o salesModel', () => {
     sinon.restore();
   });
 
-  describe('#checkIfExists', () => {
+  describe('#checkIfSaleExists', () => {
     it('ao mandar um id de um registro que existe deve retornar `true`', async () => {
       sinon.stub(db, 'query').resolves([salesMock[0]]);
-      const exists = await salesModel.checkIfExists(1);
+      const exists = await salesModel.checkIfSaleExists(1);
       expect(exists).to.be.equal(true);
     });
 
     it('ao mandar um id de um registro que não existe deve retornar `false`', async () => {
       sinon.stub(db, 'query').resolves([[]]);
-      const exists = await salesModel.checkIfExists(99);
+      const exists = await salesModel.checkIfSaleExists(99);
       expect(exists).to.be.equal(false);
     });
   });
