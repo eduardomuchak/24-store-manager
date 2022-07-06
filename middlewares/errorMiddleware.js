@@ -1,3 +1,4 @@
+const errorMessageVerificator = require('../helpers/errorMessageVerificator');
 const {
   HTTP_NOT_FOUND_STATUS,
   HTTP_INTERNAL_SERVER_ERROR_STATUS,
@@ -7,14 +8,13 @@ const {
 
 const errorMiddleware = (err, _req, res, _next) => {
   const { name, message } = err;
+  // REGEX PARA REMOVER "[0]." DA MENSAGEM DE ERRO PARA RETORNAR A MENSAGEM CORRETAMENTE
+  const fixedMessage = message.replace(/[[0-9]*]./, '');
   switch (name) {
     case 'ValidationError':
-      if (message === '"name" is required') {
-        return res.status(HTTP_BAD_REQUEST_STATUS).json({ message });
-      }
-      if (message === '"name" length must be at least 5 characters long') {
-        return res.status(HTTP_UNPROCESSABLE_STATUS).json({ message });
-      }
+      res.status(errorMessageVerificator(message)
+        ? HTTP_BAD_REQUEST_STATUS
+        : HTTP_UNPROCESSABLE_STATUS).json({ message: fixedMessage });
       break;
 
     case 'NotFoundError':
