@@ -2,10 +2,10 @@ const connection = require('./connection');
 
 const salesModel = {
 
-  async checkIfExists(saleId) {
-    const query = 'SELECT 1 FROM sales_products WHERE sale_id = ?';
+  async checkIfSaleExists(saleId) {
+    const query = 'SELECT 1 FROM sales WHERE id = ?';
     const [[exists]] = await connection.execute(query, [saleId]);
-    return !!exists;
+    return Boolean(exists);
   },
   
   async listAllSales() {
@@ -39,6 +39,13 @@ const salesModel = {
     `;
     const [sale] = await connection.execute(query, [saleId]);
     return sale;
+  },
+
+  async addSale() {
+    const query = 'INSERT INTO sales (date) VALUES (?);';
+    const saleDate = new Date();
+    const [{ insertId }] = await connection.execute(query, [saleDate]);
+    return insertId;
   },
 
 };

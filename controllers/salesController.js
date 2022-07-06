@@ -1,6 +1,6 @@
 const salesServices = require('../services/salesServices');
 const {
-  HTTP_OK_STATUS,
+  HTTP_OK_STATUS, HTTP_CREATED_STATUS,
 } = require('../helpers/codesHTTP');
 
 const salesController = {
@@ -14,9 +14,26 @@ const salesController = {
     const [{ id }] = await Promise.resolve([
       salesServices.validateParamsId(req.params),
     ]);
-    await salesServices.checkIfExists(id);
+    await salesServices.checkIfSaleExists(id);
     const sale = await salesServices.getSaleById(id);
     res.status(HTTP_OK_STATUS).json(sale);
+  },
+
+  async addSale(req, res) {
+    const validSale = await salesServices.validateBody(req.body);
+
+    const validProducts = validSale.map(({ productId }) =>
+      salesServices.checkIfProductExists(productId));
+    await Promise.all(validProducts);
+
+    const saleId = await salesServices.addSale(validSale);
+
+    const responseJson = {
+      id: saleId,
+      itemsSold: validSale,
+    };
+
+    res.status(HTTP_CREATED_STATUS).json(responseJson);
   },
 
 };

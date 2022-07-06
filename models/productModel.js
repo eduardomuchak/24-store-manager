@@ -5,7 +5,7 @@ const productModel = {
   async checkIfExists(id) {
     const query = 'SELECT 1 FROM products WHERE id = ?';
     const [[exists]] = await connection.execute(query, [id]);
-    return !!exists;
+    return Boolean(exists);
   },
 
   async listAllProducts() {

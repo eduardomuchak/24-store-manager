@@ -126,5 +126,24 @@
       }
     ],
     "tests": []
+  },
+  {
+    "_id": "4de8274d-ad86-4238-b6e6-4dae59a3ee95",
+    "colId": "b57b989b-d25c-42b3-bde0-b2574933e2c7",
+    "containerId": "a9731350-b764-43bd-95dc-26a46941641d",
+    "name": "POST /sales",
+    "url": "localhost:3000/sales",
+    "method": "POST",
+    "sortNum": 80000,
+    "created": "2022-07-06T18:13:49.067Z",
+    "modified": "2022-07-06T18:14:55.372Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "  [\n    {\n      \"productId\": 1,\n      \"quantity\":1\n    },\n    {\n      \"productId\": 2,\n      \"quantity\":5\n    }\n  ]",
+      "form": []
+    },
+    "tests": []
   }
 ]
