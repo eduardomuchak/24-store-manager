@@ -5,6 +5,7 @@ const salesRoute = Router();
 
 salesRoute.get('/:id', salesController.getSaleById);
 salesRoute.put('/:id', salesController.editSale);
+salesRoute.delete('/:id', salesController.deleteSale);
 salesRoute.post('/', salesController.addSale);
 salesRoute.get('/', salesController.listAllSales);
 

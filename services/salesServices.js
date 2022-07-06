@@ -59,6 +59,11 @@ const salesServices = {
     await Promise.all(result);
     return saleId;
   },
+
+  async deleteSale(saleId) {
+    await salesModel.deleteSale(saleId);
+    return true;
+  },
 };
 
 module.exports = salesServices;

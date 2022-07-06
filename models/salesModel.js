@@ -48,6 +48,11 @@ const salesModel = {
     return insertId;
   },
 
+  async deleteSale(saleId) {
+    const query = 'DELETE FROM sales WHERE id = ?;';
+    const [{ affectedRows }] = await connection.execute(query, [saleId]);
+    return affectedRows;
+  },
 };
 
 module.exports = salesModel;

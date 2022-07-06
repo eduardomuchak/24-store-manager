@@ -1,6 +1,6 @@
 const salesServices = require('../services/salesServices');
 const {
-  HTTP_OK_STATUS, HTTP_CREATED_STATUS,
+  HTTP_OK_STATUS, HTTP_CREATED_STATUS, HTTP_NO_CONTENT_STATUS,
 } = require('../helpers/codesHTTP');
 
 const salesController = {
@@ -55,6 +55,15 @@ const salesController = {
     };
 
     res.status(HTTP_OK_STATUS).json(responseJson);
+  },
+
+  async deleteSale(req, res) {
+    const [{ id }] = await Promise.resolve([
+      salesServices.validateParamsId(req.params),
+    ]);
+    await salesServices.checkIfSaleExists(id);
+    await salesServices.deleteSale(id);
+    res.sendStatus(HTTP_NO_CONTENT_STATUS);
   },
 };
 
