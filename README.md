@@ -40,9 +40,3 @@ Install the dependencies:
 ```
 npm install
 ```
-
-Launch the application in your browser:
-
-```
-npm start
-```
