@@ -21,7 +21,7 @@ Testing technologies such as Mocha, Chai, Chais-As-Promised, and Sinon were used
 - Kanban
 - Scrum
 
-## How to run the application:
+## How to install the application:
 
 To download the code:
 
